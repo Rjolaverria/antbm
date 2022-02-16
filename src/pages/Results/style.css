@@ -1,0 +1,21 @@
+.results-container {
+  padding: 72px 70px
+}
+
+.results-container .ready-h1 {
+  margin-top: 160px;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.try-again-button {
+  margin-top: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex
+}

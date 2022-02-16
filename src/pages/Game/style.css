@@ -1,0 +1,25 @@
+.game-container {
+  padding: 72px 70px
+}
+
+.game-photo-container {
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.game-buttons-container {
+  display: flex;
+  justify-content: center;
+}
+
+.game-score {
+  font-family: Poppins;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 80px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin: 0;
+}

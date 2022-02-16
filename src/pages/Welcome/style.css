@@ -1,0 +1,39 @@
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100vw;
+  padding-left: 70px;
+}
+
+.welcome-container .main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-container h1 {
+  font-size: 140px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 175px;
+  letter-spacing: 0em;
+  max-width: 1168px;
+}
+
+.welcome-container h3 {
+  margin-top: 0;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 60px;
+  letter-spacing: 0em;
+  text-align: center;
+
+}
+
+.welcome-container img.app-logo {
+  max-height: 95vh;
+  object-fit: contain;
+}
