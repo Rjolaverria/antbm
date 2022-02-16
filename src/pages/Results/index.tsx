@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from '@mui/material/ListItemIcon';
+
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useContext} from "react";
@@ -38,18 +40,24 @@ const Results = () => {
           {currentGame?.players
             .sort((a, b) => b.score - a.score)
             .map((player, index) => (
-              <ListItem key={player.id}>
-                <ListItemText primary={index + 1} />
+              <ListItem
+                key={player.id}
+                secondaryAction={
+                  <ListItemText
+                    primary={player.score}
+                    style={player.id === "AI" ? { color: "#73BF37" } : {}}
+                  />
+                }
+              >
+                <ListItemIcon>
+                  <ListItemText primary={index + 1} />
+                </ListItemIcon>
                 <ListItemText
                   primary={
                     player.id === currentGame.currentUserId
                       ? "You"
                       : player.name
                   }
-                  style={player.id === "AI" ? { color: "#73BF37" } : {}}
-                />
-                <ListItemText
-                  primary={player.score}
                   style={player.id === "AI" ? { color: "#73BF37" } : {}}
                 />
               </ListItem>
