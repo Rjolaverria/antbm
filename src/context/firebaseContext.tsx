@@ -3,7 +3,6 @@ import {initializeApp, FirebaseApp} from 'firebase/app';
 import { getFirestore, Firestore } from "firebase/firestore"
 import { getAuth, Auth } from "firebase/auth"
 import { getAnalytics, Analytics } from 'firebase/analytics'
-import { populateFireStore } from '../utils/populateFirestore';
 
 const firebase = initializeApp({
         apiKey: process.env.REACT_APP_API_KEY,

@@ -3,14 +3,13 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate} from "react-router-dom";
 
 import Polaroid from "../../components/Polaroid";
 import Timer from "../../components/Timer";
 import Title from "../../components/Title";
 
 import "./style.css";
-import dummyData from "../../data/dummy_data.json";
 import { Classification, GameContext } from "../../context/gameContext";
 
 const Game = () => {
@@ -23,17 +22,17 @@ const Game = () => {
   const [roundResult, setRoundResult] = useState<string>("");
   const [showAnswer, setShowAnswer] = useState(false);
 
-  useEffect(() => {
-    if (currentGame) {
-      setModels(currentGame.rounds);
-      setRound(0);
-      setRoundOver(false);
-      setShowAnswer(false);
-    } else {
-      navigate('/menu')
-    }
-  }, []);
 
+  useEffect(() => {
+    setModels(currentGame?.rounds);
+    setRound(0);
+    setRoundOver(false);
+    setShowAnswer(false);
+  }, [currentGame?.rounds, navigate]);
+
+  if(!currentGame) {
+    return <Navigate to="/menu" />
+  }
   const finishRound = () => {
     setRoundOver(true);
     setShowAnswer(true);
@@ -67,7 +66,7 @@ const Game = () => {
 
   return (
     <main className="game-container">
-      <Grid container direction="column" justifyContent="center">
+      {!!models && <Grid container direction="column" justifyContent="center">
         <Grid item container justifyContent="center" xs={6} direction="row">
           <Grid item xs={10}>
             <Title />
@@ -80,8 +79,8 @@ const Game = () => {
           <div className="game-photo-container">
             <Polaroid
               showAnswer={showAnswer}
-              img={dummyData[round].s3_uri}
-              isAI={dummyData[round].true_label === 1}
+              img={models[round].s3_uri}
+              isAI={models[round].true_label === 1}
             />
           </div>
         </Grid>
@@ -125,7 +124,7 @@ const Game = () => {
                   endIcon={<ArrowForwardIosIcon />}
                   onClick={nextRound}
                 >
-                  {round < dummyData.length - 1 ? "Next" : "Results"}
+                  {round < models?.length - 1 ? "Next" : "Results"}
                 </Button>
               </div>
             ) : (
@@ -133,7 +132,7 @@ const Game = () => {
             )}
           </Grid>
         </Grid>
-      </Grid>
+      </Grid>}
     </main>
   );
 };

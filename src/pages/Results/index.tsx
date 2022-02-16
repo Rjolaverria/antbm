@@ -5,8 +5,8 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import { useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useContext} from "react";
 
 import "./style.css";
 import { GameContext } from "../../context/gameContext";
@@ -19,11 +19,9 @@ const Results = () => {
     navigate("/menu");
   };
 
-  useEffect(() => {
-    if(!currentGame) {
-      navigate("/menu")
-    }
-  }, [])
+  if (!currentGame) {
+    return <Navigate to="/menu" />
+  }
 
   return (
     <main className="results-container">

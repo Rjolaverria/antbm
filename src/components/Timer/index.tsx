@@ -16,7 +16,7 @@ const Timer = ({ callBack, initSeconds, size = "md", className }: TimerProps) =>
 
   useEffect(() => {
     !!initSeconds && setSeconds(initSeconds) && setIsActive(true);
-  }, []);
+  }, [initSeconds]);
 
   useEffect(() => {
     let timerId= setInterval(() => {
