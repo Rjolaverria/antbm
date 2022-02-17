@@ -25,7 +25,7 @@
 .tyrabots-wins {
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .tyrabots-wins .tyrabots {
