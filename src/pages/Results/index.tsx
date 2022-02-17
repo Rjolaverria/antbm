@@ -5,7 +5,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import Divider from '@mui/material/Divider';
+import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { useNavigate, Navigate } from "react-router-dom";
@@ -32,18 +32,21 @@ const Results = () => {
   return (
     <main className="results-container">
       <Title />
-      <Typography variant="h2" align="center" marginTop={10} marginBottom={2}>
+      <Typography variant="h2" align="center" marginTop={10} marginBottom={1}>
         {rankings[0].id === currentGame.currentUserId ? (
           <span>🌟{"You win!!"}🌟</span>
         ) : rankings[0].id === "AI" ? (
-          <span className="tyrabots-wins">
-            <Tyrabots /> Tyra Bots wins!!
-          </span>
+          <div className="tyrabots-wins">
+            <Tyrabots />
+            <div className="bubble speech">
+                Better luck next time!
+            </div>
+          </div>
         ) : (
-          `${rankings[0].name} wins!`
+          "You lose..."
         )}
       </Typography>
-      <Divider/>
+      <Divider />
       <Typography variant="h1" className="leaderboard-h1">
         Player Leaderboard
       </Typography>

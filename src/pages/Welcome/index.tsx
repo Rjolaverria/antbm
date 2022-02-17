@@ -36,7 +36,7 @@ const Welcome = () => {
         </Grid>
         <Grid item xs={12}>
           <div className="welcome-footer">
-            Powered by <img src={tyrabots} alt="Tyra bots" style={{width:40}}/>Tyra bots from Drift AI
+            Powered by <img src={tyrabots} alt="Tyra bots" style={{width:40}}/>Tyra Bots @ Drift AI
           </div>
         </Grid>
       </Grid>

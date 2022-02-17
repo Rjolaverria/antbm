@@ -3,7 +3,8 @@
   justify-content: center;
   height: 100%;
   width: 100vw;
-  padding-left: 70px;
+  overflow: hidden;
+  padding-left: 74px;
 }
 
 .welcome-container .main-content {
@@ -30,7 +31,6 @@
   line-height: 60px;
   letter-spacing: 0em;
   text-align: center;
-
 }
 
 .welcome-container img.app-logo {
@@ -57,10 +57,25 @@
     font-size: 80px;
     line-height: 100px;
   }
+  .welcome-container {
+    padding:22px
+  }
 }
 
 @media screen and (max-width: 700px) {
-  .welcome-container {
-    padding:22px
+
+  .welcome-container h1 {
+    font-size: 60px;
+    line-height: 60px
+  }
+  .welcome-container h3 {
+    font-size: 20px;
+    line-height: normal;
+  }
+  .welcome-container img.app-logo {
+    width:100%;
+    margin-top: 30px;
+    max-height: 44vh;
+    object-fit: contain;
   }
 }
