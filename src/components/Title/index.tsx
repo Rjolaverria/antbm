@@ -1,7 +1,3 @@
-import './style.css'
+import Typography from "@mui/material/Typography";
 
-const Title = () => {
-  return <h2 className="title">America’s Next Top Bot Model</h2>;
-};
-
-export default Title;
+export default () => <Typography variant="h3">America’s Next Top Bot Model</Typography>

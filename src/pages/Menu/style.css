@@ -1,14 +1,14 @@
 .menu-container {
-  padding: 72px 70px
+  padding: 22px;
+  max-width: 1400px;
+  margin: auto;
 }
-
 .menu-container .ready-h1 {
   margin-top: 160px;
   margin-bottom: 160px;
   font-size: 140px;
   font-style: normal;
   font-weight: 600;
-  line-height: 40px;
   letter-spacing: 0em;
   text-align: center;
 }
@@ -19,4 +19,25 @@
   justify-content: center;
   align-items: center;
   height: 70vh;
+}
+
+@media only screen and (max-width: 1190px) {
+  .menu-container {
+    padding: 30px
+  }
+  .menu-container .ready-h1 {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 70px;
+    line-height: normal;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .menu-container .ready-h1 {
+    margin-top: 60px;
+    margin-bottom: 100px;
+    font-size: 60px;
+    line-height: normal;
+  }
 }

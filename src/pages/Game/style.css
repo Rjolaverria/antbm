@@ -1,9 +1,16 @@
 .game-container {
-  padding: 72px 70px
+  padding: 22px;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.game-header-container {
+  margin-bottom: 20px;
 }
 
 .game-photo-container {
-  margin-top: 120px;
+  margin-top:30px;
+  position: relative;
   display: flex;
   justify-content: center;
 }
@@ -13,13 +20,8 @@
   justify-content: center;
 }
 
-.game-score {
-  font-family: Poppins;
-  font-size: 60px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 80px;
-  letter-spacing: 0em;
-  text-align: center;
-  margin: 0;
+@media only screen and (max-width: 600px) {
+  .game-header-container {
+    margin-bottom: 10px;
+  }
 }

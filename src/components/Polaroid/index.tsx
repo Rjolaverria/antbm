@@ -1,29 +1,22 @@
+import Tyrabots from "../Tyrabots";
 import "./style.css";
-
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-
 interface PolaroidProps {
-  img: string
-  isAI?: boolean;
+  img: string;
   showAnswer?: boolean;
+  trueLabel: 1 | 0
+  botLabel: 1 | 0
 }
 
-const Polaroid = ({ img, isAI, showAnswer }: PolaroidProps) => {
-  return (
-    <Card>
-      <CardMedia
-        component="img"
-        height="400px"
-        image={img}
-        alt="Polaroid"
-      />
-      <CardContent>
-        {showAnswer ? (isAI ? "AI-Genereted Model" : "Human") : null}
-      </CardContent>
-    </Card>
-  );
-};
+const Polaroid = ({ img, showAnswer, trueLabel, botLabel }: PolaroidProps) => (
+  <div className="polaroid-container">
+    <div className="polaroid">
+      <img src={img} alt="person-photo" />
+      <div className="polaroid-bottom">
+        {showAnswer ? (trueLabel === 1 ? "AI-Generated Model" : "Human") : null}
+      </div>
+    </div>
+    {showAnswer && trueLabel === botLabel && <Tyrabots />}
+  </div>
+);
 
 export default Polaroid;

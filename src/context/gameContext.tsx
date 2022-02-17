@@ -2,88 +2,85 @@ import { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import dummyData from "../data/dummy_data.json";
+import { useLocalStorage } from "../hooks/useLocalStorage";
+
+const randomItems = <T,>(array: T[], count: number) => {
+  const res:number[] = [];
+
+  while(res.length < count){
+      const r = Math.floor(Math.random() * dummyData.length);
+      if(res.indexOf(r) === -1) res.push(r);
+  }
+
+  return res.map(i => array[i])
+}
 
 export interface Player {
-  id: string;
-  name: string;
-  score: number;
-  type: "HUMAN" | "AI";
+  id: string
+  name: string
+  score: number
+  type: "HUMAN" | "AI"
 }
 
 export interface Classification {
-  id: string;
-  s3_uri: string;
-  true_label: 1 | 0;
-  bot_label: 1 | 0;
+  id: string
+  s3_uri: string
+  true_label: 1 | 0
+  bot_label: 1 | 0
 }
 
 export interface Game {
-  gameId: string;
-  currentUserId: string;
-  players: Player[];
-  rounds: Classification[];
-  roundCount: number;
-  roundDuration: number;
-  gameOver: boolean;
+  gameId: string
+  currentUserId: string
+  players: Player[]
+  rounds: Classification[]
+  roundCount: number
+  roundDuration: number
+  gameOver: boolean
 }
 
 export const GameContext = createContext<{
-  currentGame?: Game;
-  newGame: (name: string, roundCount: number, roundDuration: number) => void;
-  resetGame: () => void;
-  setScore: (score: number) => void;
-  score: number;
+  currentGame?: Game
+  newGame: (name:string, roundCount: number, roundDuration: number) => void
+  resetGame: () => void
+  setScore: (score: number) => void
+  score: number
+  totalDataCount: number
 }>({
   newGame: () => {},
   resetGame: () => {},
-  setScore: (score: number) => {},
+  setScore: () => {},
   score: 0,
+  totalDataCount: 20
 });
 
 export const GameContextProvider: React.FC = ({ children }) => {
   const [currentGame, setCurrentGame] = useState<Game>();
+  const [userId] = useLocalStorage('antbm.userId', uuidv4())
 
-  // Fisher-Yates
-  function shuffle<T>(array: T[]) {
-    let currentIndex = array.length,
-      randomIndex;
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
-    }
-
-    return array;
-  }
 
   const newGame = (name: string, roundCount = 10, roundDuration = 5) => {
-    const currentUserId = uuidv4();
-    const shuffledClassifications = shuffle(
-      dummyData as Classification[]
-    ).slice(0, roundCount);
-    const botScore = shuffledClassifications.reduce((sum, a) =>  a.bot_label === a.true_label ? sum + 1 : sum, 0);
+    const randomClassifications = randomItems(dummyData as Classification[], roundCount)
 
+    const botScore = randomClassifications.reduce((sum, a) =>  a.bot_label === a.true_label ? sum + 1 : sum, 0);
     setCurrentGame({
       gameId: uuidv4(),
-      currentUserId,
+      currentUserId: userId,
       players: [
         {
-          id: currentUserId,
+          id: userId,
           name,
           score: 0,
           type: "HUMAN",
         },
         {
           id: "AI",
-          name: "Tyra Bot",
+          name: "Tyra Bots",
           score: botScore,
           type: "AI",
         },
       ],
-      rounds: shuffledClassifications,
+      rounds: randomClassifications,
       roundCount,
       roundDuration,
       gameOver: false,
@@ -111,7 +108,7 @@ export const GameContextProvider: React.FC = ({ children }) => {
 
   return (
     <GameContext.Provider
-      value={{ currentGame, newGame, resetGame, setScore, score }}
+      value={{ currentGame, newGame, resetGame, setScore, score, totalDataCount:20 }}
     >
       {children}
     </GameContext.Provider>
