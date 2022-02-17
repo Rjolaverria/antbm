@@ -10,7 +10,7 @@ interface PolaroidProps {
 const Polaroid = ({ img, showAnswer, trueLabel, botLabel }: PolaroidProps) => (
   <div className="polaroid-container">
     <div className="polaroid">
-      <img src={img} alt="person-photo" />
+      <img src={img} alt="Model" />
       <div className="polaroid-bottom">
         {showAnswer ? (trueLabel === 1 ? "AI-Generated Model" : "Human") : null}
       </div>

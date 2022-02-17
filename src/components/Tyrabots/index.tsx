@@ -1,6 +1,6 @@
 import tyrabots from "../../assets/stock/tyrabots.png";
 
-export default ({ width, height }: { width?: number; height?: number }) => (
+const Tyrabots = ({ width, height }: { width?: number; height?: number }) => (
   <img
     className="tyrabots"
     src={tyrabots}
@@ -8,3 +8,5 @@ export default ({ width, height }: { width?: number; height?: number }) => (
     style={{ width, height }}
   />
 );
+
+export default Tyrabots

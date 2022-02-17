@@ -12,7 +12,6 @@ import Title from "../../components/Title";
 
 import "./style.css";
 import { Classification, GameContext } from "../../context/gameContext";
-import Tyrabots from "../../components/Tyrabots";
 
 const Game = () => {
   const navigate = useNavigate();

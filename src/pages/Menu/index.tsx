@@ -13,7 +13,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const Menu = () => {
   const navigate = useNavigate();
-  const { newGame, totalDataCount } = useContext(GameContext);
+  const { newGame } = useContext(GameContext);
   const [startGame, setStartGame] = useState(false);
   const [ready, setReady] = useState(false);
   const [username, setUsername] = useLocalStorage("antbm.username", "");
