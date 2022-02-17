@@ -20,7 +20,7 @@ const Game = () => {
   const [models, setModels] = useState<Classification[]>();
   const [round, setRound] = useState(0);
   const [roundOver, setRoundOver] = useState(false);
-  const [roundResult, setRoundResult] = useState<"pass" | "fail" | "timeOut">();
+  const [roundResult, setRoundResult] = useState<"passHuman" | "failHuman" | "passAI" | "failAI" |"timeOut">();
   const [showAnswer, setShowAnswer] = useState(false);
 
   useEffect(() => {
@@ -53,9 +53,18 @@ const Game = () => {
     finishRound();
     if (models && answer === models[round].true_label) {
       setScore(score + 1);
-      setRoundResult("pass");
+      if(models[round].true_label === 0) {
+        setRoundResult("passHuman")
+      } else {
+        setRoundResult("passAI")
+      }
     } else {
-      setRoundResult("fail");
+      if(models && models[round].true_label === 0) {
+        setRoundResult("failHuman");
+      } else {
+        setRoundResult("failAI")
+      }
+
     }
   };
 
@@ -65,7 +74,7 @@ const Game = () => {
   };
 
   const roundResultsMap = {
-    pass: (
+    passAI: (
       <>
         <Typography variant="h2" align="center">
           SUCCESS!
@@ -75,10 +84,30 @@ const Game = () => {
         </Typography>
       </>
     ),
-    fail: (
+    passHuman: (
+      <>
+        <Typography variant="h2" align="center">
+          SUCCESS!
+        </Typography>
+        <Typography variant="h3" align="center">
+          You correctly identified the Human!
+        </Typography>
+      </>
+    ),
+    failHuman: (
       <>
         <Typography variant="h2" align="center">
           This is a fellow human
+        </Typography>
+        <Typography variant="h3" align="center">
+          Better luck next time...
+        </Typography>
+      </>
+    ),
+    failAI: (
+      <>
+        <Typography variant="h2" align="center">
+          This is AI generated
         </Typography>
         <Typography variant="h3" align="center">
           Better luck next time...

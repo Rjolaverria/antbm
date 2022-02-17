@@ -1,0 +1,14 @@
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0 4px;
+}
+
+.app-footer span{
+  display: flex;
+  align-items: center;
+}

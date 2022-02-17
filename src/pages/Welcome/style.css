@@ -39,12 +39,6 @@
   object-fit: contain;
 }
 
-.welcome-footer {
-  display: flex;
-  align-items: center;
-}
-
-
 @media screen and (max-width: 1700px) {
   .welcome-container h1 {
     font-size: 100px;

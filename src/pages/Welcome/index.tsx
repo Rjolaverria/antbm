@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 
 import logo from "../../assets/stock/Welcome-main.png";
-import tyrabots from "../../assets/stock/tyrabots.png";
-
 import "./style.css";
 const Welcome = () => {
   const navigate = useNavigate();
@@ -33,11 +31,6 @@ const Welcome = () => {
         </Grid>
         <Grid item md={4} sm={12}>
           <img src={logo} className="app-logo" alt="ANTBM logo" />
-        </Grid>
-        <Grid item xs={12}>
-          <div className="welcome-footer">
-            Powered by <img src={tyrabots} alt="Tyra bots" style={{width:40}}/>Tyra Bots @ Drift AI
-          </div>
         </Grid>
       </Grid>
     </main>
