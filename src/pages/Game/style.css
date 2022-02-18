@@ -2,6 +2,7 @@
   padding: 22px;
   max-width: 1400px;
   margin: auto;
+  height: 100vh;
 }
 
 .game-header-container {
@@ -9,7 +10,7 @@
 }
 
 .game-photo-container {
-  margin-top:30px;
+  margin-top: 20px;
   position: relative;
   display: flex;
   justify-content: center;

@@ -7,9 +7,11 @@ import Grid from "@mui/material/Grid";
 
 import logo from "../../assets/stock/Welcome-main.png";
 import "./style.css";
+import AppFooter from "../../components/AppFooter";
 const Welcome = () => {
   const navigate = useNavigate();
   return (
+    <>
     <main className="welcome-container">
       <Grid container direction="row" justifyContent="center">
         <Grid item md={8} sm={12} container justifyContent="center">
@@ -34,6 +36,8 @@ const Welcome = () => {
         </Grid>
       </Grid>
     </main>
+    <AppFooter />
+    </>
   );
 };
 

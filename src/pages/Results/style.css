@@ -2,6 +2,7 @@
   padding: 22px;
   max-width: 1400px;
   margin: auto;
+  height: 100vh;
 }
 
 .results-container .leaderboard-h1 {

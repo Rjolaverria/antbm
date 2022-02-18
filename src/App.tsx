@@ -7,7 +7,6 @@ import Menu from "./pages/Menu";
 import Game from "./pages/Game";
 import Results from "./pages/Results";
 import { AudioContextProvider } from "./context/audioContext";
-import AppFooter from "./components/AppFooter";
 
 const App = () => {
   return (
@@ -23,7 +22,6 @@ const App = () => {
                 <Route path="/results" element={<Results />} />
               </Routes>
             </BrowserRouter>
-            <AppFooter />
           </AudioContextProvider>
         </GameContextProvider>
       </FirebaseProvider>
