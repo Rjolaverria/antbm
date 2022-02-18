@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import dummyData from "../data/dummy_data.json";
+import realData from "../data/final_data.json";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const randomItems = <T,>(array: T[], count: number) => {
@@ -24,7 +25,7 @@ export interface Player {
 
 export interface Classification {
   id: string
-  s3_uri: string
+  s3_uri?: string
   true_label: 1 | 0
   bot_label: 1 | 0
 }
@@ -60,7 +61,7 @@ export const GameContextProvider: React.FC = ({ children }) => {
 
 
   const newGame = (name: string, roundCount = 10, roundDuration = 5) => {
-    const randomClassifications = randomItems(dummyData as Classification[], roundCount)
+    const randomClassifications = randomItems(realData as Classification[], roundCount)
 
     const botScore = randomClassifications.reduce((sum, a) =>  a.bot_label === a.true_label ? sum + 1 : sum, 0);
     setCurrentGame({

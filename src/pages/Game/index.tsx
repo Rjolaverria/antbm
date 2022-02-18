@@ -150,7 +150,7 @@ const Game = () => {
       <div className="game-photo-container">
         <Polaroid
           showAnswer={showAnswer}
-          img={models[round].s3_uri}
+          img={require(`../../assets/final_contestants/${models[round].id}.${models[round].true_label === 1 ? 'jpeg' : 'jpg'}`)}
           trueLabel={models[round].true_label}
           botLabel={models[round].bot_label}
         />
