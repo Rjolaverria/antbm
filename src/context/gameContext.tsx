@@ -1,7 +1,5 @@
 import { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-
-import dummyData from "../data/dummy_data.json";
 import realData from "../data/final_data.json";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
