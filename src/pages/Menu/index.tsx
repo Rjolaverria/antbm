@@ -18,9 +18,9 @@ const Menu = () => {
   const [startGame, setStartGame] = useState(false);
   const [ready, setReady] = useState(false);
   const [username] = useLocalStorage("antbm.username", "");
-  const [rounds, setRounds] = useLocalStorage<number>("antbm.rounds");
+  const [rounds, setRounds] = useLocalStorage<number>("antbm.rounds", 10);
   const [roundDuration, setRoundDuration] = useLocalStorage<number>(
-    "antbm.roundDuration"
+    "antbm.roundDuration", 10
   );
 
   const start = () => {
