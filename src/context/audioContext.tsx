@@ -1,6 +1,6 @@
 import { createContext, useEffect, useMemo, useState } from "react";
 
-import audioFile from "../assets/audio/track.mp3";
+import audioFile from "../assets/audio/Daydream.mp3";
 
 export const AudioContext = createContext<{
   muted?: boolean
