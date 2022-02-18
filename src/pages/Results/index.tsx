@@ -14,6 +14,7 @@ import { useContext } from "react";
 import "./style.css";
 import { GameContext } from "../../context/gameContext";
 import Tyrabots from "../../components/Tyrabots";
+import AppFooter from "../../components/AppFooter";
 
 const Results = () => {
   const navigate = useNavigate();
@@ -90,6 +91,7 @@ const Results = () => {
           </Button>
         </div>
       </Box>
+      <AppFooter />
     </main>
   );
 };

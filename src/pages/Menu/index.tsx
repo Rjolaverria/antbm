@@ -10,13 +10,14 @@ import { useContext, useState } from "react";
 import Timer from "../../components/Timer";
 import { GameContext } from "../../context/gameContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import AppFooter from "../../components/AppFooter";
 
 const Menu = () => {
   const navigate = useNavigate();
   const { newGame } = useContext(GameContext);
   const [startGame, setStartGame] = useState(false);
   const [ready, setReady] = useState(false);
-  const [username, setUsername] = useLocalStorage("antbm.username", "");
+  const [username] = useLocalStorage("antbm.username", "");
   const [rounds, setRounds] = useLocalStorage<number>("antbm.rounds");
   const [roundDuration, setRoundDuration] = useLocalStorage<number>(
     "antbm.roundDuration"
@@ -43,13 +44,6 @@ const Menu = () => {
             alignItems="center"
             maxWidth="400px"
           >
-            <TextField
-              fullWidth
-              label="Name"
-              variant="outlined"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
             <TextField
               fullWidth
               select
@@ -108,6 +102,7 @@ const Menu = () => {
           <Timer initSeconds={3} callBack={() => navigate("/game")} size="lg" />
         </div>
       )}
+      <AppFooter />
     </main>
   );
 };

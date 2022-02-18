@@ -1,8 +1,9 @@
-import { createContext, useState } from "react";
-import Track from "../components/Track";
+import { createContext, useEffect, useMemo, useState } from "react";
+
+import audioFile from "../assets/audio/track.mp3";
 
 export const AudioContext = createContext<{
-  muted: boolean
+  muted?: boolean
   setMuted: (muted: boolean) => void;
 }>({
   muted: false,
@@ -10,10 +11,27 @@ export const AudioContext = createContext<{
 });
 
 export const AudioContextProvider: React.FC = ({ children }) => {
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(false)
+  const audio = useMemo(() => new Audio(audioFile),[])
+
+  useEffect(() => {
+    const canPlay = () => {
+      audio.play();
+    }
+    audio.addEventListener("canplaythrough", canPlay);
+    return () => audio.removeEventListener("canplaythrough",canPlay)
+  },[audio])
+
+  useEffect(() => {
+    if(muted) {
+      audio.pause()
+    } else {
+      audio.play()
+    }
+  }, [audio, muted])
+
   return (
-    <AudioContext.Provider value={{ setMuted, muted }}>
-      <Track muted={false} />
+    <AudioContext.Provider value={{ muted, setMuted }}>
       {children}
     </AudioContext.Provider>
   );
