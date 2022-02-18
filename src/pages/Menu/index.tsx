@@ -51,7 +51,7 @@ const Menu = () => {
               value={rounds}
               onChange={(e) => setRounds(Number(e.target.value))}
             >
-              {[5, 10, 15, 20, 25, 30, 35, 50].map((option) => (
+              {[5, 10, 15, 20, 25, 30, 35, 40, 45, 50].map((option) => (
                 <MenuItem key={option} value={option}>
                   {option}
                 </MenuItem>

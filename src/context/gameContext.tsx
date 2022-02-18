@@ -7,9 +7,12 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const randomItems = <T,>(array: T[], count: number) => {
   const res:number[] = [];
+  if (count > array.length) {
+    count = array.length
+  }
 
   while(res.length < count){
-      const r = Math.floor(Math.random() * dummyData.length);
+      const r = Math.floor(Math.random() * array.length);
       if(res.indexOf(r) === -1) res.push(r);
   }
 
