@@ -17,16 +17,16 @@ const Menu = () => {
   const { newGame } = useContext(GameContext);
   const [startGame, setStartGame] = useState(false);
   const [ready, setReady] = useState(false);
-  const [username] = useLocalStorage("antbm.username", "");
+  const [username] = useLocalStorage("antbm.username", "user");
   const [rounds, setRounds] = useLocalStorage<number>("antbm.rounds", 10);
   const [roundDuration, setRoundDuration] = useLocalStorage<number>(
     "antbm.roundDuration", 10
   );
 
   const start = () => {
-    if (username && rounds && roundDuration) {
+    if (rounds && roundDuration) {
       setStartGame(true);
-      newGame(username, rounds, roundDuration);
+      newGame(username || "user", rounds, roundDuration);
     }
   };
 
